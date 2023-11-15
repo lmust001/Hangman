@@ -1,0 +1,4 @@
+food = ['pizza', 'burger', 'hotdog', 'fries', 'chicken', 'steak', 'salad', 'icecream', 'cookie', 'cake', 'pie', 'donut', 'candy'] 
+drinks = [ 'water', 'soda', 'juice', 'coffee', 'tea', 'milk', 'soda',] 
+animals = ['dog', 'cat', 'bird', 'fish', 'rabbit', 'snake', 'deer', 'cow', 'horse', 'sheep', 'pig', 'chicken'] 
+games = ['chess', 'checkers', 'sudoku', 'connect4', 'tictactoe', 'hangman']
