@@ -1,0 +1,73 @@
+import random
+from game_stages import stage
+from game_words import food
+from game_words import drinks
+from game_words import animals
+from game_words import games
+
+list_of_categories = [food, drinks, animals, games]
+category = random.choice(list_of_categories)
+game_word = random.choice(category)
+lives = 6
+dashed_word = []
+guessed_letters = []
+
+for letter in game_word:
+  if letter.isalpha():
+    dashed_word += "_"
+  else:
+    dashed_word += letter
+
+
+if category == food:
+  print("Your category is foods.")
+elif category == drinks:
+  print("Your category is drinks.")
+elif category == animals:
+  print("Your category is animals.")
+elif category == games:
+  print("Your category is games.")
+
+while lives > 0:
+  if lives > 1:
+    print(f"You have {lives} lives left.")
+  if lives == 1:
+    print(f"You have {lives} live left.")
+  print(stage[lives])
+  print("".join(dashed_word))
+  guess = input("Guess a SINGLE letter: ")
+  if guess.isalpha() == False:
+    print("Please enter a single letter.")
+  if guess in guessed_letters:
+    print("You already guessed that letter or word.")
+  if guess.isalpha() and len(guess) == 1 and guess not in guessed_letters:
+    guessed_letters.append(guess)
+    if guess.casefold() in game_word.casefold():
+      print("You got it!")
+      for index, letter in enumerate(game_word):
+        if letter.casefold() == guess.casefold():
+          dashed_word[index] = letter
+    else:
+      print("Nope.")
+      lives -= 1
+  if len(guess) >= 2 and guess.casefold() != game_word.casefold(): 
+    lives -= 1
+  if lives == 0:
+    print(stage[lives])
+    print(f"You lost. Game word was {game_word}.")
+    break
+  if "".join(dashed_word) == game_word:
+    print("You win!")
+    break
+  if guess == game_word:
+    print("You won!")
+    break
+
+while True:
+  play_again = input("Do you want to play again? Yes or no. ")
+  if play_again.casefold() == "yes":
+    import main
+    break
+  elif play_again.casefold() == "no":
+    print("Thank you for playing.")
+    break
